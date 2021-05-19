@@ -14,7 +14,7 @@ namespace alg
     std::pair<I, I> minmax_element(I first, I last, Compare cmp)
     {
         if (first == last)
-            return {last, last};
+            return std::make_pair(last, last);
         I min = first;
         I max = first;
         ++first;
@@ -36,8 +36,7 @@ namespace alg
             {
                 max = potentialMax;
             }
-            ++first;
-            ++first;
+            std::advance(first, 2);
         }
 
         // odd amount of elements
@@ -53,7 +52,7 @@ namespace alg
             }
         }
 
-        return {min, max};
+        return std::make_pair(min, max);
     }
 }
 
@@ -65,10 +64,4 @@ TEST(MinMaxElement, compare_to_std)
 
     EXPECT_EQ(*min, *min2);
     EXPECT_EQ(*max, *max2);
-}
-
-int main(int argc, char **argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }
