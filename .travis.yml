@@ -1,0 +1,29 @@
+---
+language: cpp
+
+os:
+  - linux
+
+dist: focal
+sudo: required
+
+compiler:
+  - gcc
+
+before_install:
+  sudo apt-get -y install libgtest-dev
+
+install:
+  - g++ --version
+  - cmake --version
+
+before_script:
+   - mkdir build
+   - cd build
+   - cmake ..
+
+script:
+   - make test_fndrd1d1
+   - ./test_fndrd1d1
+   - make test_0xPwner
+   - ./test_0xPwner
