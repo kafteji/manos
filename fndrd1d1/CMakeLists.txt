@@ -10,4 +10,5 @@ target_link_libraries(fndrd1d1
 
 target_sources(fndrd1d1
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/algorithms/minmax_element.cpp)
+        ${CMAKE_CURRENT_LIST_DIR}/algorithms/minmax_element.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/algorithms/min.cpp)
