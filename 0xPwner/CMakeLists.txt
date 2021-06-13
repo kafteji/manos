@@ -10,4 +10,4 @@ target_link_libraries(0xPwner
 
 target_sources(0xPwner
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/algorithms/foo.cpp)
+        ${CMAKE_CURRENT_LIST_DIR}/data_structures/lru_cache.cpp)

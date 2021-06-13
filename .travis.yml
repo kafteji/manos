@@ -18,12 +18,11 @@ install:
   - cmake --version
 
 before_script:
-   - mkdir build
-   - cd build
-   - cmake ..
+  - mkdir build
+  - cmake -DCMAKE_BUILD_TYPE=Release -S . -B build
 
 script:
-   - make test_fndrd1d1
-   - ./test_fndrd1d1
-   - make test_0xPwner
-   - ./test_0xPwner
+  - cmake --build build --target test_fndrd1d1 -- -j 4
+  - build/test_fndrd1d1
+  - cmake --build build --target test_0xPwner -- -j 4
+  - build/test_0xPwner
