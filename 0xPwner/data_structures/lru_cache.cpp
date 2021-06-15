@@ -6,6 +6,8 @@
 
 template <typename T, size_t SIZE>
 class lru_cache {
+  static_assert(SIZE > 0);
+
  public:
   lru_cache() noexcept = default;
 
