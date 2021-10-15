@@ -1,0 +1,35 @@
+---
+name: pipeline
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Sources
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get -y install libgtest-dev clang
+
+      - name: Configure
+        run: |
+          clang++ --version
+          cmake --version
+          mkdir build
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++
+
+      - name: Build & Test for fndrd1d1
+        run: |
+          cmake --build build --target test_fndrd1d1 -- -j 4
+          build/test_fndrd1d1
+
+      - name: Build & Test for kafteji
+        run: |
+          cmake --build build --target test_kafteji -- -j 4
+          build/test_kafteji
